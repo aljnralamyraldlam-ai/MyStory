@@ -12,8 +12,8 @@ font-family: Arial, sans-serif;
 color: #fff;
 
 background:
-    linear-gradient(rgb(2, 7, 23), rgba(0, 0, 0, 0)),
-    url("images/.jpg") center / cover fixed;
+    linear-gradient(#020717, rgba(0, 0, 0, 0)),
+    url("images/flag2.jpg") center / cover fixed;
 
 text-align: center;
 
