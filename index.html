@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجرنا</title><!-- ربط ملف CSS -->
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body><div class="language-bar">
+    <button id="arBtn" class="active" onclick="changeLanguage('ar')">
+        🇸🇦 العربية
+    </button>
+
+    <button id="trBtn" onclick="changeLanguage('tr')">
+        🇹🇷 Türkçe
+    </button>
+</div>
+
+<main class="container">
+
+    <div class="logo">💎</div>
+
+    <h1
+        data-ar="متجري الفاخر"
+        data-tr="Lüks Mağazam">
+        متجري الفاخر
+    </h1>
+
+    <p
+        class="description"
+        data-ar="أهلًا وسهلًا بكم في متجرنا، حيث الأصالة والفخامة."
+        data-tr="Mağazamıza hoş geldiniz. Kalite ve zarafet burada buluşuyor.">
+        أهلًا وسهلًا بكم في متجرنا، حيث الأصالة والفخامة.
+    </p>
+
+    <div
+        class="products"
+        data-ar="مسابح • عقيق • كهرمان • خواتم • سلاسل"
+        data-tr="Tesbih • Akik • Kehribar • Yüzük • Zincir">
+        مسابح • عقيق • كهرمان • خواتم • سلاسل
+    </div>
+
+    <a
+        class="social-button"
+        href=""
+        target="_blank"
+        rel="noopener noreferrer"
+        data-ar="📸 تابعنا على إنستغرام"
+        data-tr="📸 Instagram'da Bizi Takip Edin">
+        📸 تابعنا على إنستغرام
+    </a>
+
+    <a
+        class="social-button"
+        href=""
+        target="_blank"
+        rel="noopener noreferrer"
+        data-ar="🟢 تواصل معنا عبر واتساب"
+        data-tr="🟢 WhatsApp Üzerinden Bize Ulaşın">
+        🟢 تواصل معنا عبر واتساب
+    </a>
+
+    <button
+        class="social-button telegram-button"
+        onclick="openTelegram()"
+        data-ar="✈️ خيارات التواصل عبر تيليجرام"
+        data-tr="✈️ Telegram İletişim Seçenekleri">
+        ✈️ خيارات التواصل عبر تيليجرام
+    </button>
+
+    <a
+        class="social-button"
+        href=""
+        target="_blank"
+        rel="noopener noreferrer"
+        data-ar="🌐 موقعنا"
+        data-tr="🌐 Web Sitemiz">
+        🌐 موقعنا
+    </a>
+
+    <div
+        class="footer"
+        data-ar="نسعد بخدمتكم دائمًا 💛"
+        data-tr="Size hizmet vermekten mutluluk duyarız 💛">
+        نسعد بخدمتكم دائمًا 💛
+    </div>
+
+</main>
+
+<!-- نافذة خيارات تيليجرام -->
+<div class="modal" id="telegramModal">
+
+    <div class="modal-content">
+
+        <h2
+            data-ar="تواصل معنا عبر تيليجرام"
+            data-tr="Telegram Üzerinden İletişim">
+            تواصل معنا عبر تيليجرام
+        </h2>
+
+        <p
+            data-ar="اختر الحساب الذي تريد التواصل معه:"
+            data-tr="İletişim kurmak istediğiniz hesabı seçin:">
+            اختر الحساب الذي تريد التواصل معه:
+        </p>
+
+        <a
+            class="social-button"
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+            data-ar="الحساب الأول"
+            data-tr="Birinci Hesap">
+            الحساب الأول
+        </a>
+
+        <a
+            class="social-button"
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+            data-ar="الحساب الثاني"
+            data-tr="İkinci Hesap">
+            الحساب الثاني
+        </a>
+
+        <button
+            class="close-button"
+            onclick="closeTelegram()"
+            data-ar="إغلاق"
+            data-tr="Kapat">
+            إغلاق
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+    function changeLanguage(language) {
+        document.documentElement.lang = language;
+
+        // تحديد اتجاه الصفحة حسب اللغة
+        document.documentElement.dir =
+            language === "ar" ? "rtl" : "ltr";
+
+        // تغيير النصوص
+        document.querySelectorAll("[data-ar]").forEach(function(element) {
+            element.textContent =
+                element.getAttribute("data-" + language);
+        });
+
+        // تحديث أزرار اللغة
+        document.getElementById("arBtn").classList.toggle(
+            "active",
+            language === "ar"
+        );
+
+        document.getElementById("trBtn").classList.toggle(
+            "active",
+            language === "tr"
+        );
+
+        // تحديث عنوان الصفحة
+        document.title = language === "ar"
+            ? "متجري الفاخر"
+            : "Lüks Mağazam";
+
+        // حفظ اللغة المختارة
+        localStorage.setItem("shopLanguage", language);
+    }
+    // فتح نافذة تيليجرام
+    function openTelegram() {
+        document.getElementById("telegramModal").style.display = "flex";
+    }
+
+    // إغلاق نافذة تيليجرام
+    function closeTelegram() {
+        document.getElementById("telegramModal").style.display = "none";
+    }
+
+    // إغلاق النافذة عند الضغط خارج محتواها
+    document.getElementById("telegramModal").addEventListener(
+        "click",
+        function(event) {
+            if (event.target === this) {
+                closeTelegram();
+            }
+        }
+    );
+
+    // استعادة اللغة المحفوظة
+    const savedLanguage =
+        localStorage.getItem("shopLanguage") || "ar";
+
+    changeLanguage(savedLanguage);
+</script>
+
+</body>
+</html>
