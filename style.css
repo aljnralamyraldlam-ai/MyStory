@@ -28,9 +28,9 @@ padding: 18px;
 }
 
 .language-bar button {
-border: 1px solid #d4af37;
-background: #171717;
-color: #d4af37;
+border: 1px solid #020717;
+background: #f6f0f0;
+color: #020717;
 padding: 10px 15px;
 border-radius: 8px;
 cursor: pointer;
@@ -38,8 +38,8 @@ font-size: 15px;
 }
 
 .language-bar button.active {
-background: #d4af37;
-color: #111;
+background: #020717;
+color: #f0e9e9;
 }
 
 /* الحاوية الرئيسية */
@@ -229,3 +229,12 @@ h1 {
     }
 }
 
+/* اسم المتجر الفرعي تحت العنوان */
+.shop-subtitle {
+    color: #f9f6f6;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: -5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
